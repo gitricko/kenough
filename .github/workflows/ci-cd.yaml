@@ -5,7 +5,7 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  01-codespace-git-actions:
+  codespace-git-actions:
     runs-on: ubuntu-latest
 
     steps:
