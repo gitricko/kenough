@@ -6,7 +6,8 @@
 	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
 	"features": {
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
-		"ghcr.io/devcontainers/features/node:1": {}
+		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/devcontainers/features/python:1": {}
 	},
 	"mounts": [
 		"source=devcontainer-bashhistory,target=/commandhistory,type=volume"
@@ -23,7 +24,8 @@
 			"extensions": [
 				"svelte.svelte-vscode",
 				"github.vscode-github-actions",
-				"postman.postman-for-vscode"
+				"postman.postman-for-vscode",
+				"pomdtr.excalidraw-editor"
 			]
 		}
 	},
