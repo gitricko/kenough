@@ -12,19 +12,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          node-version: '16'
+          python-version: '3.10'  # Specify the Python version you need
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
-
-      - name: Lint code
-        run: npm run lint
-
-      - name: Build project
-        run: npm run build
+      - name: Run Test
+        run: |
+          cd 01-codespace-git-actions
+          ls -lah
