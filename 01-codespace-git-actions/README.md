@@ -1,79 +1,72 @@
-# Lesson 1: CodeSpace, Git, GitHub's Action (CICD)
+## Lesson 1: CodeSpace, Git, and GitHub’s Action (CICD)
 
-## Prerequisite
-- Register a free GitHub account
-- Chrome (preferable) or Firefox
-- Operating system: Any as you have a browser and internet connections
+### Prerequisites
+- Create a free GitHub account.
+- Install Chrome (preferred) or Firefox.
+- Any operating system with a web browser and internet connection.
 
-## Self-Learning
+### Self-Learning Resources
 - GitHub Issues: https://youtu.be/fFrq28RY1SQ?si=ZEPmR_PHblEcWS91
 - CodeSpace: https://www.youtube.com/watch?v=kvJf8s18Vr4
-- GIT: https://youtu.be/8JJ101D3knE?si=ks_gQbGxgTw9YhMg
+- Git: https://youtu.be/8JJ101D3knE?si=ks_gQbGxgTw9YhMg
 
-## CodeSpace
+### CodeSpace
 
-### What is codespace ?
-It is just Visual Studio Code (VSCode) in a web browser? VSCode on web is opensource.
+### What is CodeSpace?
+CodeSpace is essentially Visual Studio Code (VSCode) running in a web browser. It’s an open-source project (https://github.com/coder/code-server).
 
-### What is VSCode ?
-- It is a Integrated Development Environment (IDE). Heard about Eclipse or Intelli-J ?
-- Essenstially, it is a app that manages files and run code
+### What is VSCode?
+VSCode is an Integrated Development Environment (IDE) that helps you manage files and run code. It’s like having a dedicated tool for coding.
 
 ### Exercises:
 
 #### Create some code
-- Create a sub-directory under this directory with a unique-name (your name is fine)
-- Inside that folder, create a file called `hello.html`
-- Put any HTML content in there.
-- open a terminal, make sure you navigate to the current directory with `hello.html`
+- Create a subdirectory under this directory with a unique name (your name is fine).
+- Inside that folder, create a file called `hello.html`.
+- Add any HTML content to the file.
+- Open a terminal and navigate to the current directory with `hello.html`.
 
-#### Launch a web-server
-- run: `python -m http.server 8000`
-- Check out your web-server in codespace.
+#### Launch a web server
+- Run the following command in the terminal: `python -m http.server 8000`
+- Check out your web server in CodeSpace.
 
 ## Git
 
-### What is Git ?
-It is essentially a database for storing and versioning code/files. We shall use time-traveling and multi-verse as an analogy
+### What is Git?
+Git is essentially a database that stores and versioned code and files. We can think of it as a time machine that allows us to travel back and forth in time to different versions of our code.
 
-### Common git commands
+### Common Git Commands
 
 #### git clone*
-- You are copying the code/files databse from remote to your localhost
-- Usually you do it once and in codespace, you have already did it.
+- This command is used to copy the code and files from a remote repository to your local machine.
+- You usually only need to run this command once, and CodeSpace has already done it for you.
 
 #### git checkout -b (creating a branch)
-- You are creating a branch or an alternate reality for the content (story) from the `main` story line
+- This command creates a new branch in your Git repository.
+- You can use branches to organize your code and work on different features separately.
+- You’re creating a branch or an alternate reality for the content (story) from the main storyline.
 
 #### git commit -m (saving your work locally)
-- Everytime you commit changes to files/content, think of it as creating a recorded event in the time-line.
+- Every time you commit changes to files or content, think of it as recording an event in the timeline.
 
 #### git push (saving your work remotely and sharing)
-- Everything you do a `git push` you are essentially saving your work remotely and sharing it to other engineers to see your changes. 
-- In time-travel/multi-verse analogy, you are publishing your time-line or universe for other to see.
+- Every time you use git push, you’re essentially saving your work remotely and sharing it with other engineers to see your changes.
+- In the time-travel/multi-verse analogy, you’re essentially publishing your timeline or universe for others to see.
 
 #### git merge to stable branch (pull request)
-- You are merging one branch commits (content) to another branch (usually `main`). The objective is to have one branch to have the code for development
-- In time-travel/multi-verse analogy, you are trying to merge 2 time-line into one unified reality. If the same events (content) is alter different, you need to fix this event so that the universe is not broken.
+- You’re merging the commits (content) from one branch (usually main) to another branch. The goal is to have one branch have the code for development.
+- In the time-travel/multi-verse analogy, you’re trying to merge two timelines into one unified reality. If the same events (content) are altered differently, you need to fix that event to prevent the universe from being broken.
 
 ### Exercises:
 
 #### Create a new branch (from main)
-- You should be already in `main` branch in codespace
-- In terminal, run `git checkout -b myfeat/myusername`. You use created an alternative really locally
-- Publish this reality, run `git push`
-- run the alert since this branch is not in the remote yet. In future, `git push` will suffice...
+- You should already be in the main branch in Codespace.
+- In the terminal, run `git checkout -b myfeat/myusername`. You’ve created an alternative reality locally.
+- Publish this reality by running `git push`.
+- Run the alert since this branch isn’t in the remote yet. In the future, you’ll only need to run `git push`.
 
-#### Commit your code (your hello.html)
-- run `git add .` and it will put all changes into tempory queue for saving
-- run `git commit -m "short desc"` , will save your changes (creating an event) locally
-- run `git push`, now it will be save the commit in the remote server and every can see your changes from the branch
-- Keep making changes to your `hello.html` file and keep committing and pushing.
-
-#### Creating a merge to `main` branch (Pull Request)
-- Go to GitHub to create a pull request and get somebody to approve it.
-
-
-
-
-
+#### Create a pull request and observe GitHub Actions (Action Tab) in action.
+- Initiate a pull request (PR) based on your modifications to the `main` branch.
+- Compose some text or provide an explanation in your PR. Refer to this [example](https://github.com/gitricko/kenough/pull/2) for reference.
+- Create and save the PR. Then, navigate to the Action tab to monitor the progress.
+- Attempt to fail the build by creating another PR by renaming your `hello.html` file to `hello2.html` and observe the resulting outcome.
