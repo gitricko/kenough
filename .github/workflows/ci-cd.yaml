@@ -19,5 +19,33 @@ jobs:
 
       - name: Run Test
         run: |
+          # Test content in exercise 1 folder
           cd 01-codespace-git-actions
-          ls -lah
+          
+          # Find all directories in the current directory and store them in an array
+          DIRS=($(find . -maxdepth 1 -mindepth 1 -type d))
+          
+          # Loop through each directory
+          for dir in "${DIRS[@]}"; do
+            echo "Testing: $dir"
+            (
+              # Launch webserver
+              cd $dir
+              ls -lah 
+              python -m http.server 8888 &
+              sleep 2
+
+              # Test for URI: http://localhost:8888/hello.html
+              URL=http://localhost:8888/hello.html
+              if [[ $(curl -s -o /dev/null -w "%{http_code}" "$URL") -eq 200 ]]; then
+                echo "The URL returned status 200 (OK)"
+              else
+                echo "The URL did not return status 200"
+                exit 1
+              fi           
+
+              # Kill web server 
+              killall python
+              echo "---------------------------------"
+            )
+          done
