@@ -33,7 +33,7 @@ jobs:
               cd $dir
               ls -lah 
               python -m http.server 8888 &
-              PID=$!
+              sleep 2
 
               # Test for URI: http://localhost:8888/hello.html
               URL=http://localhost:8888/hello.html
@@ -44,7 +44,7 @@ jobs:
               fi           
 
               # Kill web server 
-              kill -15 $PID
+              killall python
               echo "---------------------------------"
             )
           done
