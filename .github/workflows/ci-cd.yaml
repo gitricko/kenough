@@ -37,10 +37,11 @@ jobs:
 
               # Test for URI: http://localhost:8888/hello.html
               URL=http://localhost:8888/hello.html
-              if [[ $(curl -o /dev/null -w "%{http_code}" "$URL") -eq 200 ]]; then
+              if [[ $(curl -s -o /dev/null -w "%{http_code}" "$URL") -eq 200 ]]; then
                 echo "The URL returned status 200 (OK)"
               else
                 echo "The URL did not return status 200"
+                exit 1
               fi           
 
               # Kill web server 
