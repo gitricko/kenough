@@ -23,7 +23,7 @@ jobs:
           cd 01-codespace-git-actions
           
           # Find all directories in the current directory and store them in an array
-          DIRS=($(find . -maxdepth 1 -type d))
+          DIRS=($(find . -maxdepth 1 -mindepth 1 -type d))
           
           # Loop through each directory
           for dir in "${DIRS[@]}"; do
