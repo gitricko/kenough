@@ -1,12 +1,12 @@
 /** @type {import('./$types').PageLoad} */
 
+
 export async function load({ fetch }) {
     // Get the balance from API
 	const balance = await fetch('/api/balance?startMonth=2024-9&endMonth=2024-11',
         {
             method: 'GET',
             headers: {
-                'X-API-KEY': 'fcb03a6e-9861-4608-9b30-13b09127dfd7',
                 'Content-Type': 'application/json'
             }
         }
@@ -19,7 +19,6 @@ export async function load({ fetch }) {
         {
             method: 'GET',
             headers: {
-                'X-API-KEY': 'fcb03a6e-9861-4608-9b30-13b09127dfd7',
                 'Content-Type': 'application/json'
             }
         }
