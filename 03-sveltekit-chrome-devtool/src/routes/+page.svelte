@@ -1,7 +1,8 @@
 <script lang="ts">
-    import { onMount } from "svelte"
-    import { Chart } from "frappe-charts"
+    import { onMount } from 'svelte'
+    import { Chart } from 'frappe-charts'
     import { page } from '$app/stores'
+    import type { Interest } from '../types'
 
     let chart;
     let promotionVisible = true;
@@ -20,12 +21,12 @@
     }
 
     // Data for the bar chart
-    const data = {
-        labels: ["August", "September", "October"],
+    let data = {
+        labels: [],
         datasets: [
             {
                 name: "Interest",
-                values: [78687, 95398, 83234],
+                values: [],
             },
         ],
     }
@@ -41,16 +42,16 @@
         },
     }
 
-    // total contains sum of interests for all the months in the chart
-    let total = toUSCurrencyFormat(
-        data.datasets[0].values.reduce((partialSum, a) => partialSum + a, 0),
-    )
+    let averageAccountBalance = ''
+    let totalInterestEarned = ''
 
     // Initialize the chart on mount
     onMount(() => {
-        console.log('#####')
-        console.log($page.data)
-        console.log('#####')
+        data.labels = $page.data.interest.map((entry: Interest) => entry.month)
+        data.datasets[0].values = $page.data.interest.map((entry: Interest) => entry.interest)
+        const interests = data.datasets[0].values
+        averageAccountBalance = toUSCurrencyFormat($page.data.interest.map((entry: Interest) => entry.principal)[0])
+        totalInterestEarned = toUSCurrencyFormat(interests[interests.length - 1])
         chart = new Chart("#chart", options);
     })
 </script>
@@ -61,9 +62,7 @@
         <div class="promotion">
             <div class="main-title">You could be making more money!</div>
             <div class="main-description">
-                Based on your account balances for the past 3 months, you could
-                be earning <b class="earnings">{total}</b> in interest if you leave
-                your account balances in the Money Market Deposit Account.
+                Based on your average account balances of <b class="earnings">{averageAccountBalance}</b> for the past 3 months, you could be earning as much as <b class="earnings">{totalInterestEarned}</b> in interest if you leave all your account balances in the Money Market Deposit Account.
             </div>
             <div id="chart" style="width: 100%; height: 300px;"></div>
             <div class="buttons-container">

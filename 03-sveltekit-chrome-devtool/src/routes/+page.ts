@@ -1,7 +1,7 @@
-/** @type {import('./$types').PageLoad} */
+import type { PageLoad } from './$types'
+import type { Balance } from '../types'
 
-
-export async function load({ fetch }) {
+export const load: PageLoad = async ({ fetch }) => {
     // Get the balance from API
 	const balance = await fetch('/api/balance?startMonth=2024-9&endMonth=2024-11',
         {
@@ -12,10 +12,11 @@ export async function load({ fetch }) {
         }
     );
 	const balanceJson = await balance.json();
-    console.log(balanceJson)
+
+    const averageBalance = Math.floor(balanceJson.reduce((sum: number, entry: Balance) => sum + entry.balance.amount, 0) / 3);
 
     // Get the interest from API
-    const interest = await fetch('/api/interest?principal=0&monthlyAmount=0&startMonth=1&endMonth=1',
+    const interest = await fetch(`/api/interest?principal=${averageBalance}&monthlyAmount=0&startMonth=2024-09&endMonth=2024-11`,
         {
             method: 'GET',
             headers: {
@@ -23,9 +24,8 @@ export async function load({ fetch }) {
             }
         }
     );
-	const interestJson = await interest.json();
-    console.log(interestJson)
+	
+    const interestJson = await interest.json();
 
-    balanceJson.push(interestJson.history[0])
-	return { balanceJson };
+	return { interest: interestJson.interestList };
 }
