@@ -7,6 +7,7 @@ This is a very simple sveltekit project. For this exercise, the only thing you n
 ```bash
 # To install project dependencies, please do:
 npm install
+```
 
 # Setup
 In order to keep the API_KEY "secret", we write it into a special file called `.env` in this folder. Create that file and put in the following:
