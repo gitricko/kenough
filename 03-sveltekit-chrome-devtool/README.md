@@ -18,9 +18,13 @@ API_KEY=xxxxxx
 
 Replace xxxxxxx with the API_KEY that we shared elsewhere. Doing it this way (instead of writing the value into the code directly) prevents that API_KEYs and other secret information is being stored in the source code repo. The file `.env` is ignored during git commit and push operations(see file `.gitignore`).
 
-
+```
 # To run app, please do:
 npm run dev
 ```
 
 ## Exercise
+
+We’ve developed a powerful Sweep Optimizer feature that automatically transfers funds into higher-yield accounts, such as Money Market Deposit Accounts, to help customers maximize their interest earnings. In this exercise, you’ll design and implement a promotion page for this feature on our banking portal’s dashboard. To get started, explore the two provided APIs to understand the customer data available, which you can use to enhance the promotion page.
+
+<img src="static/dashboard-exercise.png" width="50%" height="50%"/>

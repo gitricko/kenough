@@ -1,31 +1,26 @@
 import type { PageLoad } from './$types'
 import type { Balance } from '../types'
 
+const BALANCE_API_URL = '/api/balance'
+const INTEREST_API_URL = '/api/interest'
+const START_MONTH = '2024-09'
+const END_MONTH = '2024-11'
+
 export const load: PageLoad = async ({ fetch }) => {
     // Get the balance from API
-	const balance = await fetch('/api/balance?startMonth=2024-9&endMonth=2024-11',
-        {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
-    );
-	const balanceJson = await balance.json();
+    const balance = await fetch(`${BALANCE_API_URL}?startMonth=${START_MONTH}&endMonth=${END_MONTH}`);
 
-    const averageBalance = Math.floor(balanceJson.reduce((sum: number, entry: Balance) => sum + entry.balance.amount, 0) / 3);
+    // Convert balance API response to JSON
+    const balanceJson = await balance.json();
+
+    // Get the average balance
+    const averageBalance = Math.floor(balanceJson.reduce((sum: number, entry: Balance) => sum + entry.balance.amount, 0) / balanceJson.length);
 
     // Get the interest from API
-    const interest = await fetch(`/api/interest?principal=${averageBalance}&monthlyAmount=0&startMonth=2024-09&endMonth=2024-11`,
-        {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
-    );
-	
+    const interest = await fetch(`${INTEREST_API_URL}?principal=${averageBalance}&monthlyAmount=0&startMonth=${START_MONTH}&endMonth=${END_MONTH}`);
+
+    // Convert balance API response to JSON
     const interestJson = await interest.json();
 
-	return { interest: interestJson.interestList };
+    return { interest: interestJson.interestList };
 }
