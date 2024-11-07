@@ -75,6 +75,7 @@
     <img class="image" src="./dashboard.png" alt="Access Dashboard" />
     <!-- ***** PLEASE DO NOT REMOVE THE PROMOTION CONTAINER ***** -->
     <div class:invisible={!promotionVisible} class="promotion-container">
+        <!-- ***** START OF PROMOTION CONTAINER ***** -->
         <!-- ***** PLEASE FEEL FREE TO CHANGE ANYTHING WITHIN THE PROMOTION CONTAINER ***** -->
         <div class="promotion">
             <div class="main-title">You could be making more money!</div>
@@ -96,6 +97,7 @@
                 >
             </div>
         </div>
+        <!-- ***** END OF PROMOTION CONTAINER ***** -->
     </div>
 </div>
 
