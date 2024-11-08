@@ -19,3 +19,8 @@
 | **Swagger** | Toolset (built on OpenAPI)  | Designing, documenting, and testing APIs visually | Interactive UI, Codegen | https://payment-incubator.apps.dev.cborbit.dev/api-docs/                    |
 | **Postman** | Testing and Development Tool | API testing, collaboration, and environment management | HTTP request builder, Collections  | [View Documentation](payment_incubator.postman_collection.json)                |
 
+### Fetch API_KEY
+- Open New Terminal
+- Type in `echo $API_KEY`
+
+<img src="static/fetch-api-key.png" width="75%" height="75%"/>
