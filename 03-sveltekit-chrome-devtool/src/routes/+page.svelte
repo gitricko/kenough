@@ -44,27 +44,35 @@
 
     let averageAccountBalance = "";
     let totalInterestEarned = "";
+    let totalMonths = "";
 
     // Initialize the chart on mount
     onMount(() => {
+        const interestData = $page.data.interest
+
         // Set the bar chart labels
-        chartData.labels = $page.data.interest.map(
+        chartData.labels = interestData.map(
             (entry: Interest) => entry.month,
         );
 
         // Set the interest values in the chart
-        const interests = $page.data.interest.map(
+        const interests = interestData.map(
             (entry: Interest) => entry.interest,
         );
         chartData.datasets[0].values = interests;
 
-        // Setup avernage account balance and total interest values
+        // Calculate avernage account balance
         averageAccountBalance = toUSCurrencyFormat(
-            $page.data.interest.map((entry: Interest) => entry.principal)[0],
+            interestData.map((entry: Interest) => entry.principal)[0],
         );
+
+        // Calculate total interest values
         totalInterestEarned = toUSCurrencyFormat(
             interests[interests.length - 1],
         );
+
+        // Calculate total months
+        totalMonths = interests.length
 
         // Create new chart
         chart = new Chart("#chart", options);
@@ -83,7 +91,7 @@
                 Based on your average account balances of <b class="earnings"
                     >{averageAccountBalance}</b
                 >
-                for the past 3 months, you could be earning as much as
+                for the past <b class="earnings">{totalMonths}</b> months, you could be earning as much as
                 <b class="earnings">{totalInterestEarned}</b> in interest if you
                 leave all your account balances in the Money Market Deposit Account.
             </div>
