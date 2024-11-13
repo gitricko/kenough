@@ -20,6 +20,8 @@ npm run dev
 
 ## Self-Learning Resources
 
+- **HTML & CSS Book**: https://learning.oreilly.com/library/view/html-css/9781118206911/
+- **Javascript Book**: https://learning.oreilly.com/library/view/javascript-the-definitive/9781491952016/
 - **Chrome devtool**: https://www.youtube.com/watch?v=x4q86IjJFag
 - **Svelte**: https://www.youtube.com/watch?v=zojEMeQGGHs&list=PL4cUxeGkcC9hlbrVO_2QFVqVPhlZmz7tO&ab_channel=NetNinja
 - **Sveltekit**: https://www.youtube.com/watch?v=9OlLxkaeVvw&list=PL4cUxeGkcC9hpM9ARM59Ve3jqcb54dqiP&index=1&ab_channel=NetNinja
